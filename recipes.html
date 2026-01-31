@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Book | All Recipes</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-utensils"></i> RecipeBook
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="recipes.html" class="active"><i class="fas fa-book"></i> Recipes</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="recipes-header">
+            <h1><i class="fas fa-book-open"></i> All Recipes</h1>
+            <p class="subtitle">Browse, search, and save your favorite recipes</p>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search recipes...">
+                    <button id="clear-search" class="clear-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <button id="add-recipe-btn" class="btn-primary">
+                    <i class="fas fa-plus"></i> Add New Recipe
+                </button>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="breakfast">Breakfast</button>
+                <button class="filter-btn" data-filter="lunch">Lunch</button>
+                <button class="filter-btn" data-filter="dinner">Dinner</button>
+                <button class="filter-btn" data-filter="dessert">Dessert</button>
+                <button class="filter-btn" data-filter="vegetarian">Vegetarian</button>
+            </div>
+        </section>
+
+        <section class="recipes-container">
+            <div class="recipes-stats">
+                <p><span id="recipe-count">6</span> recipes available</p>
+                <button id="view-saved" class="btn-secondary">
+                    <i class="fas fa-bookmark"></i> View Saved Recipes
+                </button>
+            </div>
+
+            <div class="recipes-grid" id="recipes-grid">
+                <!-- Recipes will be loaded here by JavaScript -->
+            </div>
+
+            <div class="no-results" id="no-results">
+                <i class="fas fa-search fa-3x"></i>
+                <h3>No recipes found</h3>
+                <p>Try a different search or add a new recipe!</p>
+            </div>
+        </section>
+
+        <!-- Add Recipe Modal -->
+        <div class="modal" id="recipe-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-plus-circle"></i> Add New Recipe</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <form id="recipe-form">
+                    <div class="form-group">
+                        <label for="recipe-title"><i class="fas fa-utensils"></i> Recipe Name *</label>
+                        <input type="text" id="recipe-title" required placeholder="e.g., Creamy Garlic Pasta">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipe-category"><i class="fas fa-tag"></i> Category *</label>
+                        <select id="recipe-category" required>
+                            <option value="">Select a category</option>
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                            <option value="dessert">Dessert</option>
+                            <option value="snack">Snack</option>
+                            <option value="vegetarian">Vegetarian</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipe-time"><i class="far fa-clock"></i> Prep Time (minutes) *</label>
+                        <input type="number" id="recipe-time" required min="1" placeholder="e.g., 30">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipe-ingredients"><i class="fas fa-list"></i> Ingredients *</label>
+                        <textarea id="recipe-ingredients" required rows="4" placeholder="Enter each ingredient on a new line:
+- 2 cups pasta
+- 3 cloves garlic
+- 1 cup heavy cream"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipe-instructions"><i class="fas fa-list-ol"></i> Instructions *</label>
+                        <textarea id="recipe-instructions" required rows="6" placeholder="Enter step-by-step instructions:
+1. Boil pasta according to package directions.
+2. Sauté garlic in olive oil.
+3. Add cream and simmer..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipe-image"><i class="fas fa-image"></i> Image URL (optional)</label>
+                        <input type="url" id="recipe-image" placeholder="https://example.com/image.jpg">
+                        <small>Leave empty to use default image</small>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i> Save Recipe
+                        </button>
+                        <button type="button" class="btn-secondary close-modal">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Recipe Details Modal -->
+        <div class="modal" id="details-modal">
+            <div class="modal-content recipe-details">
+                <div class="modal-header">
+                    <h2 id="detail-title"></h2>
+                    <button class="close-details">&times;</button>
+                </div>
+                <div class="detail-content">
+                    <div class="detail-header">
+                        <div class="detail-meta">
+                            <span class="detail-category" id="detail-category"></span>
+                            <span class="detail-time" id="detail-time"></span>
+                        </div>
+                        <button class="btn-secondary" id="save-recipe-btn">
+                            <i class="far fa-bookmark"></i> Save Recipe
+                        </button>
+                    </div>
+                    
+                    <div class="detail-image">
+                        <img id="detail-img" src="" alt="">
+                    </div>
+                    
+                    <div class="detail-sections">
+                        <div class="detail-section">
+                            <h3><i class="fas fa-list"></i> Ingredients</h3>
+                            <ul id="detail-ingredients"></ul>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <h3><i class="fas fa-list-ol"></i> Instructions</h3>
+                            <ol id="detail-instructions"></ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>RecipeBook</h3>
+                <p>Your go-to place for delicious and easy recipes.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="recipes.html">Recipes</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 RecipeBook. Built with HTML, CSS & JavaScript for Web Development Class.</p>
+            <p>Student Project | All recipe images from Unsplash</p>
+        </div>
+    </footer>
+
+    <script src="js/recipes.js"></script>
+</body>
+</html>
