@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Book | Contact Us</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-utensils"></i> RecipeBook
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="recipes.html"><i class="fas fa-book"></i> Recipes</a></li>
+                <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-hero">
+            <div class="hero-content">
+                <h1><i class="fas fa-envelope"></i> Get In Touch</h1>
+                <p>Have questions, recipe suggestions, or feedback? We'd love to hear from you!</p>
+                <div class="contact-illustration">
+                    <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2><i class="fas fa-info-circle"></i> Contact Information</h2>
+                    
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Location</h3>
+                                <p>123 Recipe Street<br>Food City, FC 10001</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Email Us</h3>
+                                <p>support@recipebook.com<br>recipes@recipebook.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Call Us</h3>
+                                <p>+1 (555) 123-4567<br>Mon-Fri, 9AM-6PM EST</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Hours</h3>
+                                <p>Monday - Friday: 9AM-6PM<br>Saturday: 10AM-4PM<br>Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-contact">
+                        <h3>Follow Us</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link facebook">
+                                <i class="fab fa-facebook"></i>
+                                Facebook
+                            </a>
+                            <a href="#" class="social-link instagram">
+                                <i class="fab fa-instagram"></i>
+                                Instagram
+                            </a>
+                            <a href="#" class="social-link twitter">
+                                <i class="fab fa-twitter"></i>
+                                Twitter
+                            </a>
+                            <a href="#" class="social-link pinterest">
+                                <i class="fab fa-pinterest"></i>
+                                Pinterest
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-section">
+                    <h2><i class="fas fa-paper-plane"></i> Send Us a Message</h2>
+                    <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+                    
+                    <form id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">
+                                    <i class="fas fa-user"></i> Full Name *
+                                </label>
+                                <input type="text" id="name" required placeholder="Enter your full name">
+                                <div class="error-message" id="name-error"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">
+                                    <i class="fas fa-envelope"></i> Email Address *
+                                </label>
+                                <input type="email" id="email" required placeholder="Enter your email">
+                                <div class="error-message" id="email-error"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">
+                                <i class="fas fa-tag"></i> Subject *
+                            </label>
+                            <select id="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="recipe">Recipe Suggestion</option>
+                                <option value="feedback">Website Feedback</option>
+                                <option value="technical">Technical Issue</option>
+                                <option value="partnership">Partnership Inquiry</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="error-message" id="subject-error"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">
+                                <i class="fas fa-comment"></i> Message *
+                            </label>
+                            <textarea id="message" required rows="6" placeholder="Type your message here..."></textarea>
+                            <div class="error-message" id="message-error"></div>
+                            <div class="char-count">
+                                <span id="char-counter">0</span>/500 characters
+                            </div>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="newsletter" checked>
+                            <label for="newsletter">
+                                Subscribe to our newsletter for weekly recipes and tips
+                            </label>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">
+                                I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a> *
+                            </label>
+                            <div class="error-message" id="terms-error"></div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                            <button type="reset" class="btn-secondary">
+                                <i class="fas fa-redo"></i> Clear Form
+                            </button>
+                        </div>
+                        
+                        <div id="form-status"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I submit my own recipes?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! We love community recipes. Use the contact form above to submit your recipe, and our team will review it for potential inclusion on our website.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is RecipeBook free to use?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely! RecipeBook is completely free. We believe everyone should have access to great recipes without any cost.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How often are new recipes added?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We add new recipes every week. Subscribe to our newsletter to get notified about new additions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I save recipes for offline use?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! On the recipes page, you can save recipes to your browser's local storage. They'll be available even when you're offline.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you have a mobile app?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Not yet, but our website is fully responsive and works perfectly on all mobile devices. A mobile app is in our future plans!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <h2><i class="fas fa-map"></i> Find Us</h2>
+            <div class="map-placeholder">
+                <div class="map-content">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Our Location</h3>
+                    <p>123 Recipe Street, Food City</p>
+                    <button class="btn-secondary" id="get-directions">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>RecipeBook</h3>
+                <p>Your go-to place for delicious and easy recipes.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="recipes.html">Recipes</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 RecipeBook. Built with HTML, CSS & JavaScript for Web Development Class.</p>
+            <p>Student Project | All recipe images from Unsplash</p>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content success-modal">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Message Sent Successfully!</h2>
+            <p>Thank you for contacting us. We'll get back to you within 24 hours.</p>
+            <button class="btn-primary" id="close-success">
+                <i class="fas fa-times"></i> Close
+            </button>
+        </div>
+    </div>
+
+    <script src="js/contact.js"></script>
+</body>
+</html>
